@@ -26,7 +26,12 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Route::get('landord', [LandlordController::class, 'index'])->name('landord');
+Route::post('landord', [LandlordController::class, 'store'])->name('landord');
 Route::get('renter', [RenterController::class, 'index'])->name('renter');
+Route::post('renter', [RenterController::class, 'store'])->name('renter');
 Route::get('rent-receipt', [RenterDepositReceipt::class, 'index'])->name('rent-receipt');
+Route::post('rent-receipt', [RenterDepositReceipt::class, 'store'])->name('rent-receipt');
 Route::get('rest-rent-receipt', [RestAmount::class, 'index'])->name('rest-rent-receipt');
+Route::post('rest-rent-receipt', [RestAmount::class, 'store'])->name('rest-rent-receipt');
