@@ -27,8 +27,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('landord', [LandlordController::class, 'index'])->name('landord');
-Route::post('landord', [LandlordController::class, 'store'])->name('landord');
+
 Route::get('renter', [RenterController::class, 'index'])->name('renter');
 Route::post('renter', [RenterController::class, 'store'])->name('renter');
 Route::get('rent-receipt', [RenterDepositReceipt::class, 'index'])->name('rent-receipt');

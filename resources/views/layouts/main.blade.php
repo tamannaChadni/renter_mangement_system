@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <link rel="stylesheet" href="{{asset('assets/cs/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/cs/toastr.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/cs/jquery.dataTables.min.css')}}">
@@ -33,6 +34,7 @@
     <script src="{{asset('assets/js/jquery.min.js')}}"></script>
     <script src="{{asset('assets/js/toastr.min.js')}}"></script>
     <script src="{{asset('assets/js/jquery.dataTables.min.js')}}"></script>
+    @yield('script')
 </body>
 
 </html>

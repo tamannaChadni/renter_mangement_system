@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('renters', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('landlord_id');
-            $table->foreign('landlord_id')->references('id')->on('landlords')->onDelete('cascade');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('renter_name');
             $table->string('phn_number');
             $table->string('floor');

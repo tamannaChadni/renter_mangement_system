@@ -10,7 +10,7 @@ class Renter extends Model
     use HasFactory;
 
     protected $fillable = [
-        'landlord_id',
+        'user_id',
         'renter_name',
         'phn_number',
         'floor',
@@ -19,9 +19,9 @@ class Renter extends Model
         'advance_amount',
     ];
 
-    public function landlord()
+    public function user()
     {
-        return $this->belongsTo(Landlord::class);
+        return $this->belongsTo(User::class);
     }
     public function renter_deposit_receipt()
     {
