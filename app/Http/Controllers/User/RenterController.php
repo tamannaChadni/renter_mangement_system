@@ -13,7 +13,7 @@ class RenterController extends Controller
         return view('user.renter');
     }
     public function store(Request $request){
-
+dd($request);
         $rules = [
             'user_id' => 'required',
             'renter_name' => 'required',

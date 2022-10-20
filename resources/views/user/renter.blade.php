@@ -37,12 +37,12 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">New Renter</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="submit" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <form id="renterInfo" method="" action="">
+                <form id="renterInfo" method="" action="">
+                    <div class="modal-body">
                         @csrf
                         <div class="form-group">
                             <label for="Renter name" class="col-form-label">Renter name</label>
@@ -68,27 +68,28 @@
                             <label for="Advance amount" class="col-form-label">Advance amount</label>
                             <input type="number" class="form-control" name="advance_amount"id="advance_amount">
                         </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-success">Save information</button>
-                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success">Save information</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 @endsection
 @section('script')
     <script>
-        $('#renterInfo').on('submit', 'form', function(e) {
+        $('#exampleModal').on('submit', 'form', function(e) {
             e.preventDefault();
+            // console.log('hhhh');
             var form_data = $(this).serialize();
-
+            console.log('hi');
             $.ajax({
                 method: 'post',
-                url: 'renter.php',
-                data: 'form_data',
-                dataType: ' json',
+                url: 'renter',
+                data: form_data,
+                dataType: 'json',
                 success: function(response) {
                     toastr.success(data.status, data.message);
                 },
@@ -96,7 +97,7 @@
                     toastr.warning(data.status, data.message);
                 }
             });
-        })
+        });
     </script>
 
 @endsection
