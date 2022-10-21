@@ -6,14 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Models\Renter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Validator;
 
 class RenterController extends Controller
 {
+
     public function index(){
         return view('user.renter');
     }
     public function store(Request $request){
-dd($request);
         $rules = [
             'user_id' => 'required',
             'renter_name' => 'required',
@@ -23,8 +24,16 @@ dd($request);
             'NID' => 'required',
             'advance_amount' => 'required',
         ];
-        $data = Renter::created($request->all(),$rules);
-
+        $validation = Validator::make($request->all(), $rules);
+        if ($validation->fails()) {
+            return [
+                'status' => false,
+                'message' => 'Failed! Please fix the following errors!',
+                'errors' => $validation->errors(),
+            ];
+        }
+        $data = Renter::create($request->all());
+        // dd($data);
         if ($data) {
             return Response::json([
                 'status' => true,
@@ -34,7 +43,7 @@ dd($request);
         else {
             return Response::json([
                 'status' => false,
-                'message' => 'Please fix the following errors!'
+                'message' => 'Server Error Please Try Again After Some Times'
             ]);
 
         }

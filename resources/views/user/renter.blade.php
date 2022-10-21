@@ -50,11 +50,11 @@
                         </div>
                         <div class="form-group">
                             <label for="Phn number" class="col-form-label">Phn number</label>
-                            <input type="number" class="form-control" id="phn_number" name="phn_number">
+                            <input type="text" class="form-control" id="phn_number" name="phn_number">
                         </div>
                         <div class="form-group">
                             <label for="Floor" class="col-form-label">Floor</label>
-                            <input type="number" class="form-control" id="floor" name="floor">
+                            <input type="text" class="form-control" id="floor" name="floor">
                         </div>
                         <div class="form-group">
                             <label for="Flat number" class="col-form-label">Flat number</label>
@@ -62,7 +62,7 @@
                         </div>
                         <div class="form-group">
                             <label for="NID number" class="col-form-label">NID number</label>
-                            <input type="number" class="form-control" id="NID" name="NID">
+                            <input type="text" class="form-control" id="NID" name="NID">
                         </div>
                         <div class="form-group">
                             <label for="Advance amount" class="col-form-label">Advance amount</label>
@@ -84,17 +84,19 @@
             e.preventDefault();
             // console.log('hhhh');
             var form_data = $(this).serialize();
-            console.log('hi');
+            // console.log('hi');
             $.ajax({
                 method: 'post',
                 url: 'renter',
                 data: form_data,
                 dataType: 'json',
-                success: function(response) {
-                    toastr.success(data.status, data.message);
+
+                success:function(response) {
+                    // console.log('hhhhh');
+                    toastr.success(response.message, response.status);
                 },
-                error: function(response) {
-                    toastr.warning(data.status, data.message);
+                error:function(response) {
+                    toastr.info(response.message, response.status);
                 }
             });
         });
